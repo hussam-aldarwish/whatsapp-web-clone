@@ -20,6 +20,12 @@ function Chat() {
     console.log(process.env.NEXT_PUBLIC_BASE_URL);
     const socket = SocketIOClient.connect(process.env.NEXT_PUBLIC_BASE_URL, {
       path: "/api/socketio",
+      withCredentials: true,
+      transports: ["websocket", "polling", "flashsocket"],
+      extraHeaders: {
+        "my-custom-header": "abcd",
+      },
+      rejectUnauthorized: false,
     });
 
     socket.on("connect", () => {
@@ -28,7 +34,7 @@ function Chat() {
     });
 
     socket.on("connect_error", (err) => {
-      console.log(`connect_error due to ${err}`);
+      console.log(`connect_error due to ${err.message}`);
     });
 
     socket.on("message", (message) => {
