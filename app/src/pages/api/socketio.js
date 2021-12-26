@@ -14,12 +14,6 @@ async function handle(req, res) {
     const io = new ServerIO(httpServer, {
       path: "/api/socketio",
       transports: ["websocket", "polling", "flashsocket"],
-      cors: {
-        origin: httpServer,
-        methods: ["GET", "POST"],
-        allowedHeaders: ["my-custom-header"],
-        credentials: true,
-      },
     });
     // append SocketIO server to Next.js socket server response
     res.socket.server.io = io;
