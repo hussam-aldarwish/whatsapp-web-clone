@@ -16,6 +16,7 @@ function Chat() {
   }, [user]);
 
   useEffect(() => {
+    console.log(process.env.NEXT_PUBLIC_BASE_URL);
     const socket = SocketIOClient.connect(process.env.NEXT_PUBLIC_BASE_URL, {
       path: "/api/socketio",
     });
