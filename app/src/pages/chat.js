@@ -20,6 +20,9 @@ function Chat() {
     console.log(process.env.NEXT_PUBLIC_BASE_URL);
     const socket = SocketIOClient.connect(process.env.NEXT_PUBLIC_BASE_URL, {
       path: "/api/socketio",
+      secure: true,
+      reconnect: true,
+      rejectUnauthorized: false,
     });
 
     socket.on("connect", () => {
