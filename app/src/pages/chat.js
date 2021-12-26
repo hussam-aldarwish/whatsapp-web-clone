@@ -25,6 +25,7 @@ function Chat() {
       extraHeaders: {
         "my-custom-header": "abcd",
       },
+      rejectUnauthorized: false,
     });
 
     socket.on("connect", () => {
