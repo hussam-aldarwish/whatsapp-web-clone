@@ -16,8 +16,8 @@ function RedirectAfterTimer({ timer, url }) {
   useEffect(() => {
     if (remainingTime === 0) {
       router.push(url);
-    }
-  }, [remainingTime, router]);
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [remainingTime]);
 
   return (
     <h1>

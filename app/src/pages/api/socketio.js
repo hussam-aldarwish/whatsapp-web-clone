@@ -8,6 +8,7 @@ export const config = {
 
 async function handle(req, res) {
   if (!res.socket.server.io) {
+    console.log("New Socket.io server...");
     // adapt Next's net Server to http Server
     const httpServer = res.socket.server;
     const io = new ServerIO(httpServer, {
