@@ -13,6 +13,7 @@ async function handle(req, res) {
     const httpServer = res.socket.server;
     const io = new ServerIO(httpServer, {
       path: "/api/socketio",
+      transports: ["websocket", "polling", "flashsocket"],
       cors: {
         origin: httpServer,
         methods: ["GET", "POST"],
