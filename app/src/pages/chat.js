@@ -20,7 +20,10 @@ function Chat() {
     console.log(process.env.NEXT_PUBLIC_BASE_URL);
     const socket = SocketIOClient.connect(process.env.NEXT_PUBLIC_BASE_URL, {
       path: "/api/socketio",
-      transports: ["websocket"],
+      withCredentials: true,
+      extraHeaders: {
+        "my-custom-header": "abcd",
+      },
     });
 
     socket.on("connect", () => {
