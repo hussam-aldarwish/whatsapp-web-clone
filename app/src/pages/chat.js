@@ -16,7 +16,7 @@ function Chat() {
   }, [user]);
 
   useEffect(() => {
-    const socket = SocketIOClient.connect("http://localhost:3000", {
+    const socket = SocketIOClient.connect(process.env.NEXT_PUBLIC_BASE_URL, {
       path: "/api/socketio",
     });
 
