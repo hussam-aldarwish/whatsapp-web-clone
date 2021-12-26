@@ -22,6 +22,7 @@ function Chat() {
       path: "/api/socketio",
       transports: ["websocket", "polling", "flashsocket"],
       rejectUnauthorized: false,
+      secure: true,
     });
 
     socket.on("connect", () => {
