@@ -21,11 +21,6 @@ function Chat() {
     const socket = SocketIOClient.connect(process.env.NEXT_PUBLIC_BASE_URL, {
       path: "/api/socketio",
       withCredentials: true,
-      transports: ["websocket", "polling", "flashsocket"],
-      extraHeaders: {
-        "my-custom-header": "abcd",
-      },
-      rejectUnauthorized: false,
     });
 
     socket.on("connect", () => {
