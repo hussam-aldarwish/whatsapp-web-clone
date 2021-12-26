@@ -17,7 +17,7 @@ function RedirectAfterTimer({ timer, url }) {
     if (remainingTime === 0) {
       router.push(url);
     }
-  }, [remainingTime]);
+  }, [remainingTime, router]);
 
   return (
     <h1>

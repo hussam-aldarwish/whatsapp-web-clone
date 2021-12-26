@@ -29,7 +29,7 @@ function Login() {
         router.push("/");
       }, 500);
     }
-  }, [user]);
+  }, [user, router]);
 
   return (
     <form onSubmit={onSubmit}>

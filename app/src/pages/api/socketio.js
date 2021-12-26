@@ -6,7 +6,7 @@ export const config = {
   },
 };
 
-export default async (req, res) => {
+async function handle(req, res) {
   if (!res.socket.server.io) {
     // adapt Next's net Server to http Server
     const httpServer = res.socket.server;
@@ -17,4 +17,5 @@ export default async (req, res) => {
     res.socket.server.io = io;
   }
   res.end();
-};
+}
+export default handle;

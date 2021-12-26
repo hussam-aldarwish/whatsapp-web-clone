@@ -1,4 +1,4 @@
-export default (req, res) => {
+function handle(req, res) {
   if (req.method === "POST") {
     // get message
     const message = req.body;
@@ -9,4 +9,6 @@ export default (req, res) => {
     // return message
     res.status(201).json(message);
   }
-};
+}
+
+export default handle;

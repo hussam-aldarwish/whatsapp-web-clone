@@ -13,6 +13,7 @@ function Chat() {
 
   useEffect(() => {
     if (!user) router.push("/login");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   useEffect(() => {
@@ -30,8 +31,8 @@ function Chat() {
       chathistory.push(message);
       setChathistory([...chathistory]);
     });
-
     if (socket) return () => socket.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const sendMessage = async () => {
