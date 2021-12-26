@@ -13,7 +13,7 @@ async function handle(req, res) {
     // const httpServer = res.socket.server;
     const io = new ServerIO(process.env.NEXT_PUBLIC_BASE_URL, {
       path: "/api/socketio",
-      transports: ["websocket", "polling", "flashsocket"],
+      transports: ["polling"],
     });
     // append SocketIO server to Next.js socket server response
     res.socket.server.io = io;
