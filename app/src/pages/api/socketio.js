@@ -13,7 +13,7 @@ async function handle(req, res) {
     const httpServer = res.socket.server;
     const io = new ServerIO(httpServer, {
       path: "/api/socketio",
-      requestCert: true,
+      requestCert: false,
       rejectUnauthorized: false,
     });
     // append SocketIO server to Next.js socket server response
