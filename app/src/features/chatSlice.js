@@ -36,7 +36,7 @@ const chatSlice = createSlice({
       state.connected = payload;
     },
     addRoom: (state, { payload: { id, name, imageUrl } }) => {
-      const room = state.rooms.find((r) => r.name === name);
+      const room = state.rooms?.find((r) => r.name === name);
       if (room) {
         state.selectedRoomId = room.id;
       } else {
@@ -60,7 +60,7 @@ export default chatSlice;
 export const getConnected = (state) => state?.[sliceName]?.connected;
 export const getrooms = (state) => state?.[sliceName]?.rooms;
 export const getSelectedRoom = (state) =>
-  state?.[sliceName]?.rooms.find(
+  state?.[sliceName]?.rooms?.find(
     (r) => r.id === state?.[sliceName]?.selectedRoomId
   );
 export const getMessages = (state) =>
