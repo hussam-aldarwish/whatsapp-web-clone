@@ -31,7 +31,13 @@ const chatSlice = createSlice({
     selectRoom: (state, { payload }) => {
       state.selectedRoomId = payload;
     },
-    clearRooms: (state) => (state.rooms = initialState.rooms),
+    clearRooms: (state) => (state.rooms = [
+    {
+      id: "7dc6d19b-8bd3-4186-9deb-b850dcbbc2e6",
+      name: "Default Room",
+      imageUrl: "https://avatars.dicebear.com/api/jdenticon/Default%20Room.svg",
+    },
+  ],),
     setConnected: (state, { payload }) => {
       state.connected = payload;
     },
