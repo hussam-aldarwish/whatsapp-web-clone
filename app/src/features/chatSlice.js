@@ -23,7 +23,7 @@ const chatSlice = createSlice({
       { payload: { id, text, room, user, timestap } }
     ) => {
       if (!state.rooms?.some((r) => r.id === room.id)) state.rooms.push(room);
-      state.messages?.push({ id, text, room, user, timestap });
+      state.messages.push({ id, text, room, user, timestap });
     },
     clearMessages: (state) => {
       state.messages = [];
@@ -40,7 +40,7 @@ const chatSlice = createSlice({
       if (room) {
         state.selectedRoomId = room.id;
       } else {
-        state.rooms?.push({ id, name, imageUrl });
+        state.rooms.push({ id, name, imageUrl });
         state.selectedRoomId = id;
       }
     },

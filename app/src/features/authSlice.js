@@ -12,7 +12,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, { payload: { username, imageUrl, gender } }) => {
-      console.log("🚀 ~ file: authSlice.js ~ line 15 ~ gender", gender);
       state.user = {
         id: uuid(),
         username: username,
