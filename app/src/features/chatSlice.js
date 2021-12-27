@@ -64,8 +64,10 @@ export const getSelectedRoom = (state) =>
     (r) => r.id === state?.[sliceName]?.selectedRoomId
   );
 export const getMessages = (state) =>
-  state?.[sliceName]?.messages.filter(
+  state?.[sliceName]?.messages?.filter(
     (m) => m.room.id === state?.[sliceName]?.selectedRoomId
   );
 export const getLastMessage = (state, roomId) =>
-  state?.[sliceName]?.messages.filter((m) => m.room.id === roomId).slice(-1)[0];
+  state?.[sliceName]?.messages
+    ?.filter((m) => m.room.id === roomId)
+    .slice(-1)[0];
