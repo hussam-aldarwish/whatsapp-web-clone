@@ -11,11 +11,13 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import authSlice from "../features/authSlice";
 import { createWrapper } from "next-redux-wrapper";
+import authSlice from "../features/authSlice";
+import chatSlice from "../features/chatSlice";
 
 const rootReducer = combineReducers({
   [authSlice.name]: authSlice.reducer,
+  [chatSlice.name]: chatSlice.reducer,
 });
 
 const makeStore = ({ isServer }) => {
@@ -32,6 +34,7 @@ const makeStore = ({ isServer }) => {
       key: "root",
       version: 1,
       storage,
+      blacklist: [chatSlice.name],
     };
     const persistedReducer = persistReducer(persistConfig, rootReducer);
     const store = configureStore({

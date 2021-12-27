@@ -1,15 +1,19 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../features/authSlice";
 import SocketIOClient from "socket.io-client";
 import { v4 as uuid } from "uuid";
+import {
+  getMessages,
+  messageReceived,
+  setConnected,
+} from "../features/chatSlice";
 
 function Chat() {
   const router = useRouter();
+  const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const [chathistory, setChathistory] = useState([]);
-  const [connected, setConnected] = useState(false);
 
   useEffect(() => {
     if (!user) router.push("/login");
@@ -24,7 +28,7 @@ function Chat() {
 
     socket.on("connect", () => {
       console.log("SOCKET CONNECTED!", socket.id);
-      setConnected(true);
+      dispatch(setConnected(true));
     });
 
     socket.on("connect_error", (err) => {
@@ -32,10 +36,16 @@ function Chat() {
     });
 
     socket.on("message", (message) => {
-      chathistory.push(message);
-      setChathistory([...chathistory]);
+      const { id, text, room, user } = message;
+      dispatch(messageReceived({ id: id, text: text, room: room, user: user }));
     });
-    if (socket) return () => socket.disconnect();
+
+    if (socket) {
+      return () => {
+        socket.disconnect();
+        dispatch(setConnected(false));
+      };
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -43,6 +53,14 @@ function Chat() {
     // build message obj
     const message = {
       user: user,
+      room: {
+        id: "7dc6d19b-8bd3-4186-9deb-b850dcbbc2e6",
+        name: "Default Room",
+        imageUrl:
+          "https://avatars.dicebear.com/api/jdenticon/Default%20Room.svg",
+      },
+      text: "fdsgbdf",
+      id: uuid(),
     };
 
     // dispatch message to other users
@@ -58,6 +76,8 @@ function Chat() {
 
     // focus after click
   };
+
+  const chathistory = useSelector(getMessages);
   return (
     <>
       <h1>Chat</h1>

@@ -10,10 +10,9 @@ async function handle(req, res) {
   if (!res.socket.server.io) {
     console.log("New Socket.io server...");
     // adapt Next's net Server to http Server
-    // const httpServer = res.socket.server;
-    const io = new ServerIO(process.env.NEXT_PUBLIC_BASE_URL, {
+    const httpServer = res.socket.server;
+    const io = new ServerIO(httpServer, {
       path: "/api/socketio",
-      transports: ["polling"],
     });
     // append SocketIO server to Next.js socket server response
     res.socket.server.io = io;
