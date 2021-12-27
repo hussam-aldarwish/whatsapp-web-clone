@@ -1,13 +1,17 @@
-function handle(req, res) {
+import Pusher from "pusher";
+
+async function handle(req, res) {
+  const pusher = new Pusher({
+    appId: process.env.app_id,
+    key: process.env.key,
+    secret: process.env.secret,
+    cluster: process.env.cluster,
+    useTLS: true,
+  });
   if (req.method === "POST") {
-    // get message
     const message = req.body;
-
-    // dispatch to channel "message"
-    res?.socket?.server?.io?.emit("message", message);
-
-    // return message
-    res.status(201).json(message);
+    await pusher.trigger("my-channel", "chat-update", message);
+    res.json({ status: 200 });
   }
 }
 
