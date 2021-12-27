@@ -22,7 +22,7 @@ const chatSlice = createSlice({
       state,
       { payload: { id, text, room, user, timestap } }
     ) => {
-      if (!state.rooms.some((r) => r.id === room.id)) state.rooms.push(room);
+      if (!state.rooms?.some((r) => r.id === room.id)) state.rooms.push(room);
       state.messages.push({ id, text, room, user, timestap });
     },
     clearMessages: (state) => {
