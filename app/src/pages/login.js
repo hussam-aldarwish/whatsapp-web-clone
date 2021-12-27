@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../features/authSlice";
@@ -8,7 +8,6 @@ function Login() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -17,10 +16,9 @@ function Login() {
   } = useForm({ mode: "onChange" });
 
   const onSubmit = handleSubmit(({ username, gender }) => {
-    setLoading(true);
     const encodedUsername = encodeURI(username);
     const imageUrl = `https://avatars.dicebear.com/api/${gender}/${encodedUsername}.svg`;
-    dispatch(login({ username: username, imageUrl: imageUrl }));
+    dispatch(login({ username, imageUrl, gender }));
   });
 
   useEffect(() => {

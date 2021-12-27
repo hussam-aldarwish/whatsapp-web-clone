@@ -18,30 +18,54 @@ const chatSlice = createSlice({
   name: sliceName,
   initialState,
   reducers: {
-    messageReceived: (state, { payload: { id, text, room, user } }) => {
+    messageReceived: (
+      state,
+      { payload: { id, text, room, user, timestap } }
+    ) => {
       if (!state.rooms.some((r) => r.id === room.id)) state.rooms.push(room);
-      state.messages.push({ id: id, text: text, room: room, user: user });
+      state.messages.push({ id, text, room, user, timestap });
     },
-    selectRoom: (state, { id }) => {
-      state.selectedRoomId = id;
+    clearMessages: (state) => {
+      state.messages = [];
     },
+    selectRoom: (state, { payload }) => {
+      state.selectedRoomId = payload;
+    },
+    clearRooms: (state) => (state.rooms = initialState.rooms),
     setConnected: (state, { payload }) => {
       state.connected = payload;
+    },
+    addRoom: (state, { payload: { id, name, imageUrl } }) => {
+      const room = state.rooms.find((r) => r.name === name);
+      if (room) {
+        state.selectedRoomId = room.id;
+      } else {
+        state.rooms.push({ id, name, imageUrl });
+        state.selectedRoomId = id;
+      }
     },
   },
 });
 
-export const { messageReceived, selectRoom, setConnected } = chatSlice.actions;
+export const {
+  messageReceived,
+  selectRoom,
+  setConnected,
+  addRoom,
+  clearMessages,
+  clearRooms,
+} = chatSlice.actions;
 export default chatSlice;
 
 export const getConnected = (state) => state?.[sliceName]?.connected;
-
+export const getrooms = (state) => state?.[sliceName]?.rooms;
 export const getSelectedRoom = (state) =>
   state?.[sliceName]?.rooms.find(
     (r) => r.id === state?.[sliceName]?.selectedRoomId
   );
-
 export const getMessages = (state) =>
   state?.[sliceName]?.messages.filter(
     (m) => m.room.id === state?.[sliceName]?.selectedRoomId
   );
+export const getLastMessage = (state, roomId) =>
+  state?.[sliceName]?.messages.filter((m) => m.room.id === roomId).slice(-1)[0];

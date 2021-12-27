@@ -11,23 +11,22 @@ const authSlice = createSlice({
   name: sliceName,
   initialState,
   reducers: {
-    login: (state, { payload: { username, imageUrl } }) => {
+    login: (state, { payload: { username, imageUrl, gender } }) => {
+      console.log("🚀 ~ file: authSlice.js ~ line 15 ~ gender", gender);
       state.user = {
         id: uuid(),
         username: username,
         imageUrl: imageUrl,
+        gender: gender,
       };
     },
     logout: (state) => {
-      state.user = "loggedOut";
-    },
-    clear: (state) => {
       state.user = null;
     },
   },
 });
 
-export const { login, logout, clear } = authSlice.actions;
+export const { login, logout } = authSlice.actions;
 export default authSlice;
 
 export const selectUser = (state) => state?.[sliceName]?.user;
