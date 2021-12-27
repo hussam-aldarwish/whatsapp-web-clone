@@ -62,7 +62,7 @@ function Chat() {
         </div>
       </div>
       <div className="chat_body">
-        {chatHistory.map((m) => (
+        {chatHistory?.map((m) => (
           <p
             key={m.id}
             className={`${

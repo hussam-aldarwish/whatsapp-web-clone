@@ -54,7 +54,7 @@ function Sidebar() {
         <div onClick={createRoom} className="sidebarChat">
           <h2>Add new room</h2>
         </div>
-        {rooms.map((r) => (
+        {rooms?.map((r) => (
           <SidebarChat room={r} key={r.id} />
         ))}
       </div>

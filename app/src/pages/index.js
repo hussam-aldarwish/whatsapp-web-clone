@@ -8,7 +8,7 @@ function Home() {
   const router = useRouter();
   useEffect(() => {
     router.push(user ? "/chat" : "/login");
-  }, [router]);
+  }, [router, user]);
   return null;
 }
 
