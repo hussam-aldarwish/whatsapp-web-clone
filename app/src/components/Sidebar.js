@@ -28,7 +28,7 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar_header">
-        <Avatar src={user.imageUrl} />
+        <Avatar src={user?.imageUrl} />
         <div>
           <h4>{user.username}</h4>
           <small>Online</small>

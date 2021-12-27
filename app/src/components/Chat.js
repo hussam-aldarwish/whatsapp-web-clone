@@ -43,7 +43,7 @@ function Chat() {
   return (
     <div className="chat">
       <div className="chat_header">
-        <Avatar src={room.imageUrl} />
+        <Avatar src={room?.imageUrl} />
         <div className="chat_headerInfo">
           <h3>{room.name}</h3>
           <p>Online</p>
