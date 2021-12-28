@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../features/authSlice";
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 function Login() {
   const dispatch = useDispatch();
@@ -30,36 +31,40 @@ function Login() {
   }, [user, router]);
 
   return (
-    <form onSubmit={onSubmit}>
-      <label>Username: </label>
-      <input
-        type="text"
-        {...register("username", {
-          required: {
-            value: true,
-            message: "Field username is required to enter chat",
-          },
-        })}
-        placeholder="Please type username"
-      />
-      {errors.username && <span>{errors.username.message}</span>}
-      <br />
-      <label>Gender: </label>
-      <div>
+    <div className="login_body">
+      <form className="box" onSubmit={onSubmit}>
+        <div><WhatsAppIcon fontSize="large"/></div>
+        <br/>
+        <label>Username </label>
         <input
-          type="radio"
-          {...register("gender")}
-          value="male"
-          defaultChecked
+          type="text"
+          {...register("username", {
+            required: {
+              value: true,
+              message: "Field username is required to enter chat",
+            },
+          })}
+          placeholder="Please type username"
         />
-        <span>Male</span>
-      </div>
-      <div>
-        <input type="radio" {...register("gender")} value="female" />
-        <span>female</span>
-      </div>
-      <input type="submit" value="Login to chat" />
-    </form>
+        {errors.username && <span>{errors.username.message}</span>}
+        <br />
+        <label fontSize="large">Gender</label>
+        <div className="radio">
+          <input
+            type="radio"
+            {...register("gender")}
+            value="male"
+            defaultChecked
+          />
+          <span>Male</span>
+        </div>
+        <div className="radio">
+          <input type="radio" {...register("gender")} value="female" />
+          <span>Female</span>
+        </div>
+        <input type="submit" value="Login to chat" />
+      </form>
+    </div>
   );
 }
 
