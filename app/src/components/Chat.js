@@ -3,6 +3,7 @@ import React from "react";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SearchIcon from "@mui/icons-material/Search";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useSelector } from "react-redux";
 import { getMessages, getSelectedRoom } from "../features/chatSlice";
 import { selectUser } from "../features/authSlice";
@@ -43,7 +44,10 @@ function Chat() {
   return (
     <div className="chat">
       <div className="chat_header">
+      <div className="back-to-side-bar">
+        <ArrowBackIosIcon />
         <Avatar src={room?.imageUrl} />
+      </div>
         <div className="chat_headerInfo">
           <h3>{room?.name}</h3>
           <p>Online</p>
