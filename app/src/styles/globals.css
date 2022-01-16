@@ -275,6 +275,10 @@ code {
     z-index: 999;
     transform: translateX(-100%);
     transition: 0.3s;
+    
+  }
+  .sidebar.open{
+    transform: translateX(-0%);
   }
   .chat{
     flex: 1;
@@ -287,4 +291,5 @@ code {
     flex-direction: row;
     cursor: pointer;
   }
+  
 }
