@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { addRoom, getrooms } from "../features/chatSlice";
 import { v4 as uuid } from "uuid";
 
-function Sidebar() {
+function Sidebar({ open, handle }) {
   const user = useSelector(selectUser);
   const router = useRouter();
   const rooms = useSelector(getrooms);
@@ -26,7 +26,7 @@ function Sidebar() {
   };
 
   return (
-    <div className="sidebar">
+    <div className={open ? "sidebar open" : "sidebar"}>
       <div className="sidebar_header">
         <Avatar src={user?.imageUrl} />
         <div>
@@ -55,7 +55,7 @@ function Sidebar() {
           <h2>Add new room</h2>
         </div>
         {rooms?.map((r) => (
-          <SidebarChat room={r} key={r.id} />
+          <SidebarChat room={r} key={r.id} handle={handle} />
         ))}
       </div>
     </div>

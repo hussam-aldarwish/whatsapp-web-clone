@@ -3,7 +3,7 @@ import React from "react";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SearchIcon from "@mui/icons-material/Search";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useSelector } from "react-redux";
 import { getMessages, getSelectedRoom } from "../features/chatSlice";
 import { selectUser } from "../features/authSlice";
@@ -11,7 +11,7 @@ import SendIcon from "@mui/icons-material/Send";
 import { useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
-function Chat() {
+function Chat({ handle }) {
   const room = useSelector(getSelectedRoom);
   const chatHistory = useSelector(getMessages);
   const user = useSelector(selectUser);
@@ -44,10 +44,10 @@ function Chat() {
   return (
     <div className="chat">
       <div className="chat_header">
-      <div className="back-to-side-bar">
-        <ArrowBackIosIcon />
-        <Avatar src={room?.imageUrl} />
-      </div>
+        <div className="back-to-side-bar" onClick={() => handle(true)}>
+          <ArrowBackIosIcon />
+          <Avatar src={room?.imageUrl} />
+        </div>
         <div className="chat_headerInfo">
           <h3>{room?.name}</h3>
           <p>Online</p>

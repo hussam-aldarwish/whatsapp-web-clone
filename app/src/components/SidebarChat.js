@@ -3,12 +3,19 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLastMessage, selectRoom } from "../features/chatSlice";
 
-function SidebarChat({ room }) {
+function SidebarChat({ room, handle }) {
   const { id, name, imageUrl } = room;
   const lastMessage = useSelector((state) => getLastMessage(state, id));
   const dispatch = useDispatch();
+
   return (
-    <div className="sidebarChat" onClick={() => dispatch(selectRoom(id))}>
+    <div
+      className="sidebarChat"
+      onClick={() => {
+        dispatch(selectRoom(id));
+        handle(false);
+      }}
+    >
       <Avatar src={imageUrl} />
       <div className="sidebarChat_info">
         <h2>{name}</h2>

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../features/authSlice";
 import { messageReceived, setConnected } from "../features/chatSlice";
@@ -11,6 +11,7 @@ function ChatPage() {
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const pusher = new Pusher(process.env.NEXT_PUBLIC_KEY, {
     cluster: "eu",
@@ -41,8 +42,8 @@ function ChatPage() {
   return (
     <div className="app">
       <div className="app_body">
-        <Sidebar />
-        <Chat />
+        <Sidebar open={sidebarOpen} handle={setSidebarOpen} />
+        <Chat handle={setSidebarOpen} />
       </div>
     </div>
   );
