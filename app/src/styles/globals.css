@@ -260,3 +260,31 @@ code {
   margin-top: 3px;
 
 }
+@media (max-width:768px) {
+  .app_body{
+    height: 100vh;
+    width: 100vw;
+  }
+  .sidebar {
+    -moz-box-flex: 1;
+    flex: 1 1;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    background: #fff;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: 0.3s;
+  }
+  .chat{
+    flex: 1;
+    width: 100vw;
+    height: 100vh;
+  }
+  .back-to-side-bar{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    cursor: pointer;
+  }
+}
