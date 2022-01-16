@@ -247,6 +247,9 @@ code {
 .radio{
   font-size: 20px;
 }
+.radio input[type = "radio"]{
+  margin: 11px 10px 0 0;
+}
 
 
 
@@ -261,7 +264,7 @@ code {
   font-weight: 700;
   cursor: pointer;
   outline: none;
-  margin-top: 3px;
+  margin-top: 15px;
 
 }
 @media (max-width:768px) {
