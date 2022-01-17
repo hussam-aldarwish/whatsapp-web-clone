@@ -45,7 +45,7 @@ function Chat({ handle }) {
     <div className="chat">
       <div className="chat_header">
         <div className="back-to-side-bar" onClick={() => handle(true)}>
-          <ArrowBackIosIcon />
+          <ArrowBackIosIcon className="backToSideBarIcon" />
           <Avatar src={room?.imageUrl} />
         </div>
         <div className="chat_headerInfo">
