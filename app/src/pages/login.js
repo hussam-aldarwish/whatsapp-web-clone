@@ -14,7 +14,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import WhatsApp from "@mui/icons-material/WhatsApp";
-import { FormControl, FormLabel, Radio, RadioGroup } from "@mui/material";
+import { Alert, FormControl, FormLabel, Radio, RadioGroup } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const theme = createTheme();
@@ -95,13 +95,14 @@ function Login() {
                 onSubmit={onSubmit}
                 sx={{ mt: 1 }}
               >
-                {errors.username && <span>{errors.username.message}</span>}
+                {errors.username && <Alert severity="error">{errors.username.message}</Alert>}
                 <TextField
                   margin="normal"
                   required
                   fullWidth
                   id="user name"
                   label="User Name"
+                  color="success"
                   name="user name"
                   autoComplete="user name"
                   autoFocus
