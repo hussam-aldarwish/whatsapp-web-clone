@@ -267,10 +267,16 @@ code {
   margin-top: 15px;
 
 }
+.backToSideBarIcon{
+  display: none !important;
+}
 @media (max-width:768px) {
   .app_body{
     height: 100vh;
     width: 100vw;
+  }
+  .backToSideBarIcon{
+    display: block !important;
   }
   .sidebar {
     -moz-box-flex: 1;
