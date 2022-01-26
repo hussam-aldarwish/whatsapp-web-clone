@@ -304,5 +304,13 @@ code {
     flex-direction: row;
     cursor: pointer;
   }
-  
+  .chat_footer{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    background: #f1f1f1;
+  }
+  .chat_message:last-child{
+    margin-bottom: 50px;
+  }
 }
