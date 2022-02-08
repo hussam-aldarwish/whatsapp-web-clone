@@ -14,8 +14,14 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import WhatsApp from "@mui/icons-material/WhatsApp";
-import { Alert, FormControl, FormLabel, Radio, RadioGroup } from "@mui/material";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import {
+  Alert,
+  FormControl,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
+// import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const theme = createTheme();
 
@@ -95,7 +101,9 @@ function Login() {
                 onSubmit={onSubmit}
                 sx={{ mt: 1 }}
               >
-                {errors.username && <Alert severity="error">{errors.username.message}</Alert>}
+                {errors.username && (
+                  <Alert severity="error">{errors.username.message}</Alert>
+                )}
                 <TextField
                   margin="normal"
                   required
@@ -120,17 +128,18 @@ function Login() {
                   <RadioGroup
                     aria-label="gender"
                     name="controlled-radio-buttons-group"
+                    defaultValue={"female"}
                   >
                     <FormControlLabel
                       value="female"
                       {...register("gender")}
-                      control={<Radio color="success" />}
+                      control={<Radio color="error" />}
                       label="Female"
                     />
                     <FormControlLabel
                       value="male"
                       {...register("gender")}
-                      control={<Radio color="secondary" />}
+                      control={<Radio color="primary" />}
                       label="Male"
                     />
                   </RadioGroup>
