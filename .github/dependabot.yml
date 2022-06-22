@@ -9,4 +9,6 @@ updates:
     # Files stored in `app` directory
     directory: "/app"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+    lables:
+      - "dependencies"
