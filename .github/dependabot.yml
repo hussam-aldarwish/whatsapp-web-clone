@@ -10,5 +10,5 @@ updates:
     directory: "/app"
     schedule:
       interval: "monthly"
-    lables:
+    labels:
       - "dependencies"
