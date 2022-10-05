@@ -6,9 +6,13 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    # Files stored in `app` directory
     directory: "/app"
     schedule:
-      interval: "monthly"
+      interval: "daily"
+    assignees:
+      - "dependabot[bot]"
+    reviewers:
+      - "hussam-aldarwish"
+    open-pull-requests-limit: 10
     labels:
       - "dependencies"
