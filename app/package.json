@@ -21,7 +21,7 @@
     "pusher-js": "^7.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.40.0",
+    "react-hook-form": "^7.41.0",
     "react-redux": "^8.0.5",
     "redux-persist": "^6.0.0",
     "socket.io-client": "^4.5.4",
