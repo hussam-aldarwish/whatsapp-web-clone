@@ -14,7 +14,7 @@
     "@material-ui/icons": "^4.11.3",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.6",
-    "@reduxjs/toolkit": "^1.9.1",
+    "@reduxjs/toolkit": "^1.9.5",
     "next": "13.1.5",
     "next-redux-wrapper": "^8.1.0",
     "pusher": "^5.1.2",
